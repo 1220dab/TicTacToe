@@ -1,0 +1,4 @@
+turns, player, board, _ = 0,'X', [[1,2,3],[4,5,6],[7,8,9]], print("\n".join([" ".join([str(j) for j in x]) for x in [[1,2,3],[4,5,6],[7,8,9]]]))
+while turns < 9 and not (any([all([x == ('X' if player == 'O' else 'O') for x in row]) for row in board]) or any([all([board[j][i] == ('X' if player == 'O' else 'O') for j in range(3)]) for i in range(3)]) or all([board[i][i] == ('X' if player == 'O' else 'O') for i in range(3)]) or all([board[i][2-i] == ('X' if player == 'O' else 'O') for i in range(3)])):
+    pos = int(input(f"It's player {player}'s turn, enter a move [1-9]: "))-1
+    board[(pos)//3][(pos)%3], turns, player, _ = (player, turns+1, 'X' if player == 'O' else 'O', print("\n".join([" ".join([player if j==(pos+1) else str(j) for j in x]) for x in board]))) if board[(pos)//3][(pos)%3] not in ('X', 'O') else (board[(pos)//3][(pos)%3], turns, player, print(end=""))
